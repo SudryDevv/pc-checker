@@ -1,9 +1,13 @@
+console.clear();
+
 const readline = require('readline');
 const fs = require('fs');
 const path = require('path');
 const colors = require('colors');
 
 const userHome = getUserHome();
+
+let cheatsFounds = 0;
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -38,6 +42,10 @@ rl.on('line', () => {
   checkDirectory(userHome, "Documents");
   checkDirectory(userHome, "Videos");
   checkDirectory(userHome, "Pictures");
+
+  setTimeout(() => {
+    console.log(colors.yellow(`\n[-] Chargement de vos fichiers terminé, ${cheatsFounds} cheat(s) trouvé(s).`));
+  }, 1000);
 });
 
 function checkDirectory(parentDir, directory) {
@@ -54,14 +62,19 @@ function checkDirectory(parentDir, directory) {
           checkDirectory(fullPath, file.name);
         } else {
           if (file.name.includes('loader_prod.exe')) {
-            console.log(colors.green("[+] Eulen trouvé dans : ", colors.yellow(fullPath), "|", colors.red(file.name)));
+            cheatsFounds++;
+            console.log(colors.green("[+] Eulen trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
           } else if (file.name.includes('loader.cfg')) {
+            cheatsFounds++;
             console.log(colors.green("[+] Settings Eulen trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
           } else if (file.name.includes('settings.cock')) {
+            cheatsFounds++;
             console.log(colors.green("[+] Settings redEngine trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
           } else if (file.name.includes('password_is_eulen')) {
+            cheatsFounds++;
             console.log(colors.green("[+] Téléchargement de Eulen trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
           } else if (file.name.includes('TZ')) {
+            cheatsFounds++;
             console.log(colors.green("[+] TZ trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
           }
         }
