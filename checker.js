@@ -31,7 +31,7 @@ console.log(colors.yellow("                     Veuillez appuyer sur ENTRÉE pou
 
 rl.on('line', () => {
   rl.close();
-  console.log(colors.yellow("\nChargement de vos fichiers.."));
+  console.log(colors.yellow("\n[-] Chargement de vos fichiers.."));
 
   checkDirectory(userHome, "Downloads");
   checkDirectory(userHome, "Desktop");
