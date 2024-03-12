@@ -20,3 +20,5 @@ Ce script Node.js permet de rechercher des fichiers suspects associés à des tr
 **Avertissement**
 
 Ce script est destiné à des fins d'audit et de vérification de la présence de logiciels de triche sur votre propre système. Il ne doit pas être utilisé pour accéder illégalement ou compromettre la sécurité d'autres utilisateurs ou systèmes. L'utilisation de logiciels de triche dans les jeux peut entraîner des conséquences négatives, telles que des interdictions de compte.
+
+![screenshot](https://github.com/SudryDevv/pc-checker/assets/108238011/15a35576-fbb1-4eec-bf56-20e670f182af)
