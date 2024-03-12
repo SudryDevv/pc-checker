@@ -1,4 +1,4 @@
-**FiveM Cheats PC Checker**
+**FiveM PC Checker against cheats**
 
 Ce script Node.js permet de rechercher des fichiers suspects associés à des tricheurs ou à des logiciels de triche pour le jeu Grand Theft Auto V (GTA V) et sa plateforme multijoueur FiveM sur des ordinateurs Windows. Il parcourt les répertoires de l'utilisateur à la recherche de fichiers souvent associés à des outils de triche, tels que des loaders, des fichiers de configuration et d'autres indicateurs potentiels de logiciels de triche.
 
