@@ -11,10 +11,10 @@ Ce script Node.js permet de rechercher des fichiers suspects associés à des tr
 **Comment utiliser**
 
 - Téléchargez ce fichier sur votre ordinateur.
-- Assurez-vous d'avoir Node.js installé sur votre système.
+- Lancez le fichier `start.bat`, celui-ci vous ouvrira le programme d'installation de NodeJS si vous ne le possedez pas.
 - Ouvrez une fenêtre de terminal et accédez au répertoire du projet.
-- Exécutez `npm init` puis `npm install` pour installer les dépendances.
-- Exécutez node checker.js pour démarrer le script.
+- Exécutez `npm install` pour installer les modules requis.
+- Exécutez le fichier `start.bat`.
 - Suivez les instructions pour démarrer la recherche.
   
 **Avertissement**
