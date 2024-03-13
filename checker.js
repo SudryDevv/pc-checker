@@ -62,20 +62,43 @@ function checkDirectory(parentDir, directory) {
           checkDirectory(fullPath, file.name);
         } else {
           if (file.name.includes('loader_prod')) {
+
             cheatsFounds++;
             console.log(colors.green("[+] Eulen trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
+
           } else if (file.name.includes('loader.cfg')) {
+
             cheatsFounds++;
             console.log(colors.green("[+] Settings Eulen trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
+
           } else if (file.name.includes('settings.cock')) {
+
             cheatsFounds++;
             console.log(colors.green("[+] Settings redEngine trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
+
           } else if (file.name.includes('password_is_eulen')) {
+
             cheatsFounds++;
             console.log(colors.green("[+] Téléchargement de Eulen trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
-          } else if (file.name.includes('TZ.zip')) {
+
+          } else if (file.name.startsWith('TZ')) {
+            if(file.name.endsWith('.zip')) {
+              cheatsFounds++;
+              console.log(colors.green("[+] TZ trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
+            }
+
+          } else if (file.name.startsWith('TZX')) {
+
+            if(file.name.endsWith('.zip')) {
+              cheatsFounds++;
+              console.log(colors.green("[+] TZX trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
+            }
+
+          } else if (file.name.includes('Susano')) {
+
             cheatsFounds++;
-            console.log(colors.green("[+] TZ trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
+            console.log(colors.green("[+] Susano trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
+
           }
         }
       });
