@@ -18,7 +18,7 @@ if %errorlevel% neq 0 (
     pause
     exit /b %errorlevel%
 ) else (
-    echo Terminé avec succès.
+    pause
 )
 
 pause
