@@ -4,6 +4,7 @@ const readline = require('readline');
 const fs = require('fs');
 const path = require('path');
 const colors = require('colors');
+const crypto = require('crypto');
 
 const userHome = getUserHome();
 
@@ -42,6 +43,7 @@ rl.on('line', () => {
   checkDirectory(userHome, "Documents");
   checkDirectory(userHome, "Videos");
   checkDirectory(userHome, "Pictures");
+  checkDirectory(userHome, "OneDrive");
 
   setTimeout(() => {
     console.log(colors.yellow(`\n[-] Chargement de vos fichiers terminé, ${cheatsFounds} cheat(s) trouvé(s).`));
@@ -61,7 +63,7 @@ function checkDirectory(parentDir, directory) {
         if (file.isDirectory()) {
           checkDirectory(fullPath, file.name);
         } else {
-          if (file.name.includes('loader_prod')) {
+          if (file.name.includes('loader_prod.exe')) {
 
             cheatsFounds++;
             console.log(colors.green("[+] Eulen trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
@@ -84,7 +86,7 @@ function checkDirectory(parentDir, directory) {
           } else if (file.name.startsWith('TZ')) {
             if(file.name.endsWith('.zip')) {
               cheatsFounds++;
-              console.log(colors.green("[+] TZ trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
+              console.log(colors.green("[+] Téléchargement de TZ trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
             }
 
           } else if (file.name.startsWith('TZX')) {
@@ -99,6 +101,38 @@ function checkDirectory(parentDir, directory) {
             cheatsFounds++;
             console.log(colors.green("[+] Susano trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
 
+          } else if (file.name.includes('chrome.exe')) {
+
+            fs.stat(filePath, (err, stats) => {
+              if (err) {
+                console.log(colors.red("[!] Erreur lors du chargement du fichier :", colors.yellow(filePath)));
+                return;
+              }
+              const fileSizeInBytes = stats.size;
+              const fileSizeInKilobytes = fileSizeInBytes / 1024;
+              const fileSizeInMegabytes = fileSizeInKilobytes / 1024;
+
+              if(fileSizeInMegabytes.toFixed(2) < 10) {
+                cheatsFounds++;
+                console.log(colors.green("[+] TZ / HX trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
+              }
+              })
+          } else if (file.name.includes('visualstudiocode.exe') && file.name.includes('visualstudio.exe') && file.name.includes('edge.exe')) {
+
+            fs.stat(filePath, (err, stats) => {
+              if (err) {
+                console.log(colors.red("[!] Erreur lors du chargement du fichier :", colors.yellow(filePath)));
+                return;
+              }
+              const fileSizeInBytes = stats.size;
+              const fileSizeInKilobytes = fileSizeInBytes / 1024;
+              const fileSizeInMegabytes = fileSizeInKilobytes / 1024;
+
+              if(fileSizeInMegabytes.toFixed(2) < 10) {
+                cheatsFounds++;
+                console.log(colors.green("[+] HX trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
+              }
+              })
           }
         }
       });
