@@ -61,7 +61,7 @@ function checkDirectory(parentDir, directory) {
         if (file.isDirectory()) {
           checkDirectory(fullPath, file.name);
         } else {
-          if (file.name.includes('loader_prod.exe')) {
+          if (file.name.includes('loader_prod')) {
             cheatsFounds++;
             console.log(colors.green("[+] Eulen trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
           } else if (file.name.includes('loader.cfg')) {
@@ -73,7 +73,7 @@ function checkDirectory(parentDir, directory) {
           } else if (file.name.includes('password_is_eulen')) {
             cheatsFounds++;
             console.log(colors.green("[+] Téléchargement de Eulen trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
-          } else if (file.name.includes('TZ')) {
+          } else if (file.name.includes('TZ.zip')) {
             cheatsFounds++;
             console.log(colors.green("[+] TZ trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
           }
