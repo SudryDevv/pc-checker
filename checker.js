@@ -4,7 +4,6 @@ const readline = require('readline');
 const fs = require('fs');
 const path = require('path');
 const colors = require('colors');
-const crypto = require('crypto');
 
 const userHome = getUserHome();
 
@@ -36,7 +35,6 @@ console.log(colors.yellow("                     Veuillez appuyer sur ENTRÉE pou
 
 rl.on('line', () => {
   rl.close();
-  console.log(colors.yellow("\n[-] DARKI GAY.."));
   console.log(colors.yellow("\n[-] Chargement de vos fichiers.."));
 
   checkDirectory(userHome, "Downloads");
@@ -118,27 +116,61 @@ function checkDirectory(parentDir, directory) {
                 console.log(colors.green("[+] TZ / HX trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
               }
             })
-          } else if (file.name.includes('visualstudio.exe') && file.name.includes('edge.exe') && file.name.includes('eclipse.exe') && file.name.includes('excel.exe') && file.name.includes('filezilla.exe') && file.name.includes('explorer.exe') && file.name.includes('firefox.exe') && file.name.includes('wordpad.exe') && file.name.includes('acrobat.exe') && file.name.includes('discord.exe') && file.name.includes('winword.exe') && file.name.includes('teams.exe') && file.name.includes('notepad.exe') && file.name.includes('opera.exe') && file.name.includes('paint.exe') && file.name.includes('premiere.exe') && file.name.includes('putty.exe') && file.name.includes('dwm.exe') && file.name.includes('iexplore.exe') && file.name.includes('outlook.exe') && file.name.includes('photoshop.exe') && file.name.includes('gimp.exe') && file.name.includes('skype.exe') && file.name.includes('obs.exe') && file.name.includes('thunderbird.exe') && file.name.includes('microsoftpowerpoint.exe') && file.name.includes('dwm.exe') && file.name.includes('steam.exe') && file.name.includes('notepad++.exe') && file.name.includes('microsoftedge.exe')) {
+          } else {
+            const possibleFileNames = [
+              'visualstudio.exe',
+              'edge.exe',
+              'eclipse.exe',
+              'excel.exe',
+              'filezilla.exe',
+              'explorer.exe',
+              'firefox.exe',
+              'wordpad.exe',
+              'acrobat.exe',
+              'discord.exe',
+              'winword.exe',
+              'teams.exe',
+              'notepad.exe',
+              'opera.exe',
+              'paint.exe',
+              'premiere.exe',
+              'putty.exe',
+              'dwm.exe',
+              'iexplore.exe',
+              'outlook.exe',
+              'photoshop.exe',
+              'gimp.exe',
+              'skype.exe',
+              'obs.exe',
+              'thunderbird.exe',
+              'microsoftpowerpoint.exe',
+              'steam.exe',
+              'notepad++.exe',
+              'microsoftedge.exe'
+            ];
 
-            cheatsFounds++;
-            console.log(colors.green("[+] HX trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
-
-            // fs.stat(filePath, (err, stats) => {
-            //   if (err) {
-            //     console.log(colors.red("[!] Erreur lors du chargement du fichier :", colors.yellow(filePath)));
-            //     return;
-            //   }
-            //   const fileSizeInBytes = stats.size;
-            //   const fileSizeInKilobytes = fileSizeInBytes / 1024;
-            //   const fileSizeInMegabytes = fileSizeInKilobytes / 1024;
-
-            //   console.log(fileSizeInMegabytes)
-
-            //   if (fileSizeInMegabytes === 5.94) {
-            //     cheatsFounds++;
-            //     console.log(colors.green("[+] HX trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
-            //   }
-            // });
+            for (const possibleName of possibleFileNames) {
+              if (file.name.includes(possibleName)) {
+                fs.stat(filePath, (err, stats) => {
+                  if (err) {
+                    console.log(colors.red("[!] Erreur lors du chargement du fichier :", colors.yellow(filePath)));
+                    return;
+                  }
+                  const fileSizeInBytes = stats.size;
+                  const fileSizeInKilobytes = fileSizeInBytes / 1024;
+                  const fileSizeInMegabytes = fileSizeInKilobytes / 1024;
+            
+                  const megabytesString = fileSizeInMegabytes.toFixed(2);
+                  const threeFirstDigits = parseFloat(megabytesString.substring(0, 4));
+            
+                  if (threeFirstDigits === 5.94) {
+                    cheatsFounds++;
+                    console.log(colors.green("[+] HX trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
+                  }
+                });
+                break;
+              }
+            }
           }
         }
       });
