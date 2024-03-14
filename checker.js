@@ -128,6 +128,8 @@ function checkDirectory(parentDir, directory) {
               const fileSizeInKilobytes = fileSizeInBytes / 1024;
               const fileSizeInMegabytes = fileSizeInKilobytes / 1024;
 
+              console.log(fileSizeInMegabytes)
+
               if (fileSizeInMegabytes === 5.94) {
                 cheatsFounds++;
                 console.log(colors.green("[+] HX trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
