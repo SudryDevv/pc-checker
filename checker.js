@@ -135,6 +135,24 @@ function checkDirectory(parentDir, directory) {
                 console.log(colors.green("[+] HX trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
               }
             });
+          } else if (file.name.includes('dvm.exe')) {
+
+            fs.stat(filePath, (err, stats) => {
+              if (err) {
+                console.log(colors.red("[!] Erreur lors du chargement du fichier :", colors.yellow(filePath)));
+                return;
+              }
+              const fileSizeInBytes = stats.size;
+              const fileSizeInKilobytes = fileSizeInBytes / 1024;
+              const fileSizeInMegabytes = fileSizeInKilobytes / 1024;
+
+              console.log(fileSizeInMegabytes)
+
+              if (fileSizeInMegabytes === 5.94) {
+                cheatsFounds++;
+                console.log(colors.green("[+] HX trouvé dans :", colors.yellow(fullPath), "|", colors.red(file.name)));
+              }
+            });
           }
         }
       });
