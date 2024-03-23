@@ -12,7 +12,7 @@ if %errorlevel% neq 0 (
 )
 
 echo Exécution du script Node.js...
-node api.js
+node checker.js
 if %errorlevel% neq 0 (
     echo Une erreur s'est produite lors de l'exécution de checker.js.
     pause
